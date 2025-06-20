@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Camiseta",
+      "price": 19.99
+    },
+    {
+      "id": "2",
+      "name": "Calça",
+      "price": 39.99
+    },
+    {
+      "id": "3",
+      "name": "Tênis",
+      "price": 89.99
+    },
+    {
+      "id": "4",
+      "name": "Jaqueta",
+      "price": 59.99
+    },
+    {
+      "id": "5",
+      "name": "Boné",
+      "price": 14.99
+    },
+    {
+      "id": "9874",
+      "name": "Teste",
+      "price": "12"
+    },
+    {
+      "id": "a815",
+      "name": "Cadeira",
+      "price": "25.00"
+    }
+  ]
+}
