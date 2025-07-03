@@ -9,7 +9,8 @@ const url = 'http://localhost:5000/products';
 const Myform = () => {
 
     //custom hook para buscar dados
-    const {data: items} = useFetch(url);    
+    const {data: items, httpConfig, loading} = useFetch(url);   
+    //const [products, setProducts] = useState([]) 
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
@@ -33,17 +34,19 @@ const Myform = () => {
 
         const product = { name, price };
 
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(product)
-        })
+        //const res = await fetch(url, {
+           // method: 'POST',
+            //headers: {
+            //    'Content-Type': 'application/json'
+           // },
+           /// body: JSON.stringify(product)
+       // })
 
         //Carregamento dinâmico de produtos
-        const addedProduct = await res.json();
-        setProducts((prevProducts) => [...prevProducts, addedProduct]);
+
+        httpConfig(product, 'POST');
+        //const addedProduct = await res.json();
+        //setProducts((prevProducts) => [...prevProducts, addedProduct]);
 
         setName('');
         setPrice('');
@@ -55,6 +58,8 @@ const Myform = () => {
         <div className='app'>
             <div className='product-list'>
                 <h1>Lista de Produtos</h1>
+                {/*Loading state*/}
+                {loading && <p>Carregando produtos...</p>}
                 <ul>
                     {items && items .map(product => (
                         <li key={product.id}>

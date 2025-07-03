@@ -34,6 +34,16 @@
       "id": "a815",
       "name": "Cadeira",
       "price": "25.00"
+    },
+    {
+      "id": "21da",
+      "name": "Gaveta",
+      "price": "150"
+    },
+    {
+      "id": "56b1",
+      "name": "Folhas de papael",
+      "price": "12.50"
     }
   ]
 }
