@@ -1,11 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Camiseta",
-      "price": 19.99
-    },
-    {
       "id": "2",
       "name": "Calça",
       "price": 39.99
@@ -44,6 +39,16 @@
       "id": "56b1",
       "name": "Folhas de papael",
       "price": "12.50"
+    },
+    {
+      "id": "6ad0",
+      "name": "Microfone",
+      "price": "60.00"
+    },
+    {
+      "id": "df7f",
+      "name": "Lapis",
+      "price": "5.50"
     }
   ]
 }

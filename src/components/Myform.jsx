@@ -9,24 +9,24 @@ const url = 'http://localhost:5000/products';
 const Myform = () => {
 
     //custom hook para buscar dados
-    const {data: items, httpConfig, loading} = useFetch(url);   
+    const { data: items, httpConfig, loading, error } = useFetch(url);
     //const [products, setProducts] = useState([]) 
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
 
     //useEffect(() => {
-       // const fetchProducts = async () => {
-         //   try {
-          //      const response = await fetch(url)
-           //     const data = await response.json()
-            //    setProducts(data)
-           // } catch (error) {
-          //      console.error('Error fetching products:', error)
-           // }
-      //  }
+    // const fetchProducts = async () => {
+    //   try {
+    //      const response = await fetch(url)
+    //     const data = await response.json()
+    //    setProducts(data)
+    // } catch (error) {
+    //      console.error('Error fetching products:', error)
+    // }
+    //  }
 
-       // fetchProducts()
+    // fetchProducts()
     //}, [])
 
     const handleSubmit = async (e) => {
@@ -35,12 +35,12 @@ const Myform = () => {
         const product = { name, price };
 
         //const res = await fetch(url, {
-           // method: 'POST',
-            //headers: {
-            //    'Content-Type': 'application/json'
-           // },
-           /// body: JSON.stringify(product)
-       // })
+        // method: 'POST',
+        //headers: {
+        //    'Content-Type': 'application/json'
+        // },
+        /// body: JSON.stringify(product)
+        // })
 
         //Carregamento dinâmico de produtos
 
@@ -52,6 +52,9 @@ const Myform = () => {
         setPrice('');
     }
 
+    const handRemove = (id) => {
+        httpConfig(id, "DELETE")
+    }
 
 
     return (
@@ -60,13 +63,18 @@ const Myform = () => {
                 <h1>Lista de Produtos</h1>
                 {/*Loading state*/}
                 {loading && <p>Carregando produtos...</p>}
+                {error && <p>{error}</p>}
+                {/*Lista de produtos*/}
+                {!loading &&(
                 <ul>
-                    {items && items .map(product => (
+                    {items && items.map(product => (
                         <li key={product.id}>
                             {product.name} - R$: {product.price}
+                            <button onClick={() => handRemove(product.id)}>Excluir</button>
                         </li>
                     ))}
                 </ul>
+                )}
             </div>
             <div className='add-product'>
                 <form onSubmit={handleSubmit}>
@@ -78,7 +86,8 @@ const Myform = () => {
                         Preço:
                         <input type="number" value={price} name="price" onChange={(e) => setPrice(e.target.value)} />
                     </label>
-                    <input type="submit" value="Adicionar Produto" />
+                    {/* states de loading no post */}
+                    {!loading && <input type="submit" value="Criar..." />}
                 </form>
             </div>
         </div>
